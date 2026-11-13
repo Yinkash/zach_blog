@@ -1,0 +1,43 @@
+<%- include("partials/header.ejs") %>
+
+<main class="home">
+  <% if (post) { %>
+  <article class="blog-card">
+    <% if (post.img) { %>
+    <img class="avatar" src="/images/<%= post.img %>" alt="<%= post.author %>" />
+    <% } else { %>
+    <div class="avatar"></div>
+    <% } %>
+
+    <h2 class="author"><%= post.author %></h2>
+    <h3 class="post-title"><%= post.title %></h3>
+    <p class="post-text"><%= post.text %></p>
+
+    <div class="card-bottom">
+      <span class="post-date"><%= post.date %></span>
+      <div class="actions">
+  <form action="/delete/<%= post.id %>" method="POST" onsubmit="return confirm('Delete this blog?')">
+    <button class="btn" type="submit">Delete blog</button>
+  </form>
+  <a class="btn" href="/edit/<%= post.id %>">Edit blog</a>
+</div>
+    </div>
+  </article>
+
+  <div class="arrows">
+    <% if (index > 0) { %>
+    <a class="arrow" href="/?post=<%= index - 1 %>">&larr;</a>
+    <% } else { %>
+    <span></span>
+    <% } %> <% if (index < total - 1) { %>
+    <a class="arrow" href="/?post=<%= index + 1 %>">&rarr;</a>
+    <% } else { %>
+    <span></span>
+    <% } %>
+  </div>
+  <% } else { %>
+  <p class="empty">No blogs yet. Write the first one!</p>
+  <% } %>
+</main>
+
+<%- include("partials/footer.ejs") %>

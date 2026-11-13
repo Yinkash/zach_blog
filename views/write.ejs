@@ -1,0 +1,34 @@
+<%- include("partials/header.ejs") %>
+
+<main class="write">
+  <h2 class="write-heading">What’s on your mind?</h2>
+
+  <form
+    action="/submit"
+    method="POST"
+    enctype="multipart/form-data"
+    class="write-form"
+  >
+    <div class="field">
+      <label for="author">Name:</label>
+      <input type="text" id="author" name="author" required />
+    </div>
+
+    <div class="field">
+      <label for="title">Title:</label>
+      <input type="text" id="title" name="title" required />
+    </div>
+
+    <label for="text" class="block-label">Write your blog:</label>
+    <textarea id="text" name="text" required></textarea>
+
+    <div class="field upload">
+      <label for="img">Upload a picture (optional):</label>
+      <input type="file" id="img" name="img" accept="image/*" />
+    </div>
+
+    <button type="submit" class="submit-btn">Submit</button>
+  </form>
+</main>
+
+<%- include("partials/footer.ejs") %>
